@@ -1,41 +1,24 @@
 <template>
   <div class="home">
-  	<div  class="my-5">	
-	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	   <hr>
-	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	   <hr>
-	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	   <hr>
-	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	   <hr>
-	</div>   
+  	<h1 class="text-center my-5">Home</h1> 	
+	  <article v-for = "article in articles">
+	  	<h3><router-link :to="`/article/${article.slug}`" aria-current="page">{{article.title}}</router-link></h3>
+	  	<div>{{article.description}} <router-link :to="`/article/${article.slug}`" aria-current="page"> +more</router-link></div>
+	  	<hr>
+	  </article>    
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
+<script>
+export default {
   name: 'HomeView',
-});
+  data(){
+  	  let articles = localStorage.getItem("articles")
+  	  articles = JSON.parse(articles)
+
+	  return{
+		  articles: articles
+	  }
+  }
+};
 </script>
