@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '../store'
 import HomeView from '../views/HomeView.vue'
+import DetailView from '../views/DetailView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -12,13 +13,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Home',
     component: HomeView,
-    meta: { LoginRequired: true }
+    meta: { url: true }
+  },
+  {
+    path: '/article/:slug',
+    name: 'Detail',
+    component: DetailView,
+    meta: { url: true }
   },
   {
     path: '/about',
     name: 'About',
     component: AboutView,
-    meta: { LoginRequired: true }
+    meta: { url: true }
   },
   {
     path: '/profile',
@@ -64,7 +71,13 @@ router.beforeEach((to, from, next) => {
       }else {
         next("/profile") 
       }
-    }  
+    } else if(to.matched.some(record => record.meta.url)) {
+      if(!store.state.isAuthentication){
+        next()
+      }else {
+        next() 
+      }
+    }   
 })
 
 export default router
