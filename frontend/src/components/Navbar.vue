@@ -18,6 +18,9 @@
 		            <router-link to="/profile" class="nav-link" v-if = "$store.state.isAuthentication">Profile</router-link>
 		          </li>
 		          <li class="nav-item">
+		            <router-link to="/add" class="nav-link" v-if = "$store.state.isAuthentication">Add an article</router-link>
+		          </li>
+		          <li class="nav-item">
 		            <router-link to="/login" class="nav-link" v-if = "!$store.state.isAuthentication">Login</router-link>
 		          </li>
 		          <li class="nav-item">
