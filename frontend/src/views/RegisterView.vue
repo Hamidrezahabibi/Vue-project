@@ -123,10 +123,9 @@ export default {
         this.passwordE2 = true
         this.passwordEM = "Password are not same."
       } else {
-        if (!this.passwordEM && !this.passwordEM2){
-          this.passwordEM = ""
-        }
-        
+          if (!this.passwordEM && !this.passwordEM2){
+            this.passwordEM = ""
+          }
       }
 
   		if (access){

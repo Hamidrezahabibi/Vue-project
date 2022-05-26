@@ -87,7 +87,7 @@ export default {
   		}
   		if (access){
   			this.$store.commit("login","12345")
-  			this.$router.push("profile")
+  			this.$router.push("/profile")
   		}
   	}
   }

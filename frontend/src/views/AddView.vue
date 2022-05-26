@@ -38,8 +38,8 @@ export default {
   		let article = {
   			title : this.title,
 	  		slug : this.title.replaceAll(" ",'-').toLowerCase(),
-			description : this.description,
-			content : this.content,	
+				description : this.description,
+				content : this.content,	
   		}
 	  	this.articles.push(article)
 	  	let database = JSON.stringify(this.articles)
